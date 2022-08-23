@@ -2,14 +2,12 @@ package clowoodive.example.lecture.spring.managementmember;
 
 import clowoodive.example.lecture.spring.managementmember.repository.JdbcMemberRepository;
 import clowoodive.example.lecture.spring.managementmember.repository.MemberRepository;
-import clowoodive.example.lecture.spring.managementmember.repository.MemoryMemberRepository;
 import clowoodive.example.lecture.spring.managementmember.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 
 @Configuration
 public class SpringConfig {
