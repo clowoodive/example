@@ -1,6 +1,7 @@
 package clowoodive.example.lecture.spring.managementmember;
 
 import clowoodive.example.lecture.spring.managementmember.repository.JdbcMemberRepository;
+import clowoodive.example.lecture.spring.managementmember.repository.JdbcTemplateMemberRepository;
 import clowoodive.example.lecture.spring.managementmember.repository.MemberRepository;
 import clowoodive.example.lecture.spring.managementmember.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+//        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
