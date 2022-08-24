@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,6 +24,7 @@ class MemberServiceIntegrationTest {
     MemberRepository memberRepository;
 
     @Test
+    // @Commit //Transactional이 있지만 commit을 쓰면 db에 변경사항 유지됨
     void join() {
         // given
         Member member = new Member();
