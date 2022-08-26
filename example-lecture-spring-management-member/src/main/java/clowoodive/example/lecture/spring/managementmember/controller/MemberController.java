@@ -18,6 +18,7 @@ public class MemberController {
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+        System.out.println("memberService = " + memberService.getClass()); // AOP가 적용되어 proxy 클래스인 것을 확인 가능
     }
 
     @GetMapping("/members/new")
