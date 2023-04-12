@@ -1,13 +1,13 @@
-package clowoodive.example.book.tobyvol2;
+package clowoodive.example.book.toby;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TobyVol2Application {
+public class TobyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TobyVol2Application.class, args);
+		SpringApplication.run(TobyApplication.class, args);
 	}
 
 }

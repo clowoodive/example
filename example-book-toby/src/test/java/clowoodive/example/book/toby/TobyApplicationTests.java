@@ -1,10 +1,10 @@
-package clowoodive.example.book.tobyvol2;
+package clowoodive.example.book.toby;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TobyVol2ApplicationTests {
+class TobyApplicationTests {
 
 	@Test
 	void contextLoads() {
