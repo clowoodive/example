@@ -1,6 +1,7 @@
 package clowoodive.example.designpattern.behavior;
 
 public abstract class TemplateMethodClass {
+
     public final void templateMethod() {
         step1();  // 공통 로직
         step2();  // 공통 로직
