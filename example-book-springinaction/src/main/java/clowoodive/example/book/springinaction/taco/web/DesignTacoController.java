@@ -49,4 +49,12 @@ public class DesignTacoController {
                 .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
     }
+
+    @PostMapping
+    public String processDesign(Taco design) {
+        // 식자재 내역 저장(추후)
+        log.info("Processing design: " + design);
+
+        return "redirect:/orders/current";
+    }
 }
