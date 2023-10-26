@@ -23,7 +23,7 @@ public class JdbcOrderRepository implements OrderRepository {
     @Autowired
     public JdbcOrderRepository(JdbcTemplate jdbc) {
         this.orderInserter = new SimpleJdbcInsert(jdbc)
-                .withTableName("Taco_order")
+                .withTableName("Taco_Order")
                 .usingGeneratedKeyColumns("id");
 
         this.orderTacoInserter = new SimpleJdbcInsert(jdbc)
