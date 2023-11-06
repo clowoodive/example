@@ -16,10 +16,8 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
-
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 // extends WebSecurityConfiguration가 deprecated되었음.
 // https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter
 //public class SecurityConfig extends WebSecurityConfiguration {
@@ -64,11 +62,10 @@ public class SecurityConfig {
                 .access("hasRole('ROLE_USER')")
                 .antMatchers("/", "/**").access("permitAll")
 //                .antMatchers(toH2Console()).permitAll()
-                .and().headers().frameOptions().sameOrigin()
-                .and()
-                .csrf().disable()
+                .and().headers().frameOptions().sameOrigin() // h2-console 로그인에 필요함(웹 콘솔에 사용되는 iframe에 대한 요청을 허용함)
+                .and().csrf().disable() // h2-console 로그인에 필요함(웹 콘솔은 요청에 csrf 토큰을 사용하지 않음)
                 .httpBasic()
-                ;
+        ;
         return http.build();
     }
 
