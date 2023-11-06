@@ -1,3 +1,13 @@
+--insert into users (username, password) values ('user1', 'pass1');
+--insert into users (username, password) values ('user2', 'pass2');
+--
+--insert into authorities (username, authority)
+--    values ('user1', 'ROLE_USER');
+--insert into authorities (username, authority)
+--    values ('user2', 'ROLE_USER');
+
+commit;
+
 --delete from Taco_Order_Tacos;
 --delete from Taco_Ingredients;
 --delete from Taco;
