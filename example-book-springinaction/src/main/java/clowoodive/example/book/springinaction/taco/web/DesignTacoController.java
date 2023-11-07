@@ -4,8 +4,10 @@ import clowoodive.example.book.springinaction.taco.Ingredient;
 import clowoodive.example.book.springinaction.taco.Ingredient.Type;
 import clowoodive.example.book.springinaction.taco.Order;
 import clowoodive.example.book.springinaction.taco.Taco;
+import clowoodive.example.book.springinaction.taco.User;
 import clowoodive.example.book.springinaction.taco.data.IngredientRepository;
 import clowoodive.example.book.springinaction.taco.data.TacoRepository;
+import clowoodive.example.book.springinaction.taco.data.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,16 +29,18 @@ public class DesignTacoController {
 
     private final IngredientRepository ingredientRepo;
 
-    private final TacoRepository tacoRepo;
+    private TacoRepository tacoRepo;
 
-    @Autowired
-    public DesignTacoController(IngredientRepository ingredientRepo, TacoRepository tacoRepo) {
+    private UserRepository userRepo;
+
+    public DesignTacoController(IngredientRepository ingredientRepo, TacoRepository tacoRepo, UserRepository userRepo) {
         this.ingredientRepo = ingredientRepo;
         this.tacoRepo = tacoRepo;
+        this.userRepo = userRepo;
     }
 
     @GetMapping
-    public String showDesignForm(Model model) {
+    public String showDesignForm(Model model, Principal principal) {
 //        List<Ingredient> ingredients = Arrays.asList(
 //                new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
 //                new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
@@ -57,7 +62,11 @@ public class DesignTacoController {
             model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
         }
 
-        model.addAttribute("taco", new Taco());
+//        model.addAttribute("taco", new Taco());
+
+        String username = principal.getName();
+        User user = userRepo.findByUsername(username);
+        model.addAttribute("user", user);
 
         return "design";
     }
